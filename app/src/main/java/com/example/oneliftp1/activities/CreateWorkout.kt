@@ -11,6 +11,10 @@ import com.example.oneliftp1.*
 
 class CreateWorkout : AppCompatActivity() {
 
+    val viewModel: OneLiftViewModel by viewModels{
+        OneLiftViewModelFactory((this?.application as OneLiftApplication).database.WorkoutDAO())
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_workout)
@@ -26,10 +30,14 @@ class CreateWorkout : AppCompatActivity() {
             val sendWT = workoutTitle.text.toString()
             val sendWA = workoutAuthor.text.toString()
 
+            viewModel.addNewWorkout(0, sendWT, sendWA)
+
             val intent = Intent(this@CreateWorkout, AddExercises::class.java)
             intent.putExtra("WorkoutTitle", sendWT)
             intent.putExtra("WorkoutAuthor", sendWA)
             this.startActivity(intent)
+
+
 
 
         }

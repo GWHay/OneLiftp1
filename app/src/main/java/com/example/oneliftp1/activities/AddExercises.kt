@@ -44,8 +44,9 @@ class AddExercises : AppCompatActivity() {
             val displayWeight = weight.text.toString()
 
             displayExercises.setText(displayName + " " + displayReps +" " + displaySets +" " + displayWeight)
-            viewModel.addNewWorkout(0, workoutTitle.toString(), workoutAuthor.toString())
+            //viewModel.addNewWorkout(0, workoutTitle.toString(), workoutAuthor.toString())
 
+            viewModel.addNewExercise(0,0, "Bicep curl", 12, 3, 20.0)
         }
 
 
