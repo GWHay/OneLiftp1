@@ -5,11 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import com.example.oneliftp1.R
-import com.example.oneliftp1.WorkoutDAO
-import com.example.oneliftp1.WorkoutRoomDatabase
+import androidx.activity.viewModels
+import androidx.fragment.app.activityViewModels
+import com.example.oneliftp1.*
 
 class CreateWorkout : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_workout)
@@ -29,9 +30,6 @@ class CreateWorkout : AppCompatActivity() {
             intent.putExtra("WorkoutTitle", sendWT)
             intent.putExtra("WorkoutAuthor", sendWA)
             this.startActivity(intent)
-
-
-
 
 
         }
