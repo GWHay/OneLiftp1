@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.oneliftp1.R
+import com.example.oneliftp1.activities.MainActivity
 
 class HomeFragment: Fragment() {
     override fun onCreateView(
@@ -27,7 +29,7 @@ class HomeFragment: Fragment() {
             sms.sendTextMessage(pNumber.text.toString(),"me", message.text.toString(),null,null)
             //sendSMS(pNumber.text.toString(), message.text.toString())
 
-
+            Toast.makeText(context,"Message sent",Toast.LENGTH_LONG).show()
         }
 
         return view

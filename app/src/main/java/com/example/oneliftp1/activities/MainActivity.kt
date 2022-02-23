@@ -36,9 +36,6 @@ class MainActivity : AppCompatActivity() {
         tabLayout.tabGravity = TabLayout.GRAVITY_FILL
 
 
-
-
-
         val viewPager = findViewById<ViewPager2>(R.id.pager)
         val adapter = MyPageAdapter(this, 4)
         viewPager.adapter = adapter
@@ -84,9 +81,11 @@ class MainActivity : AppCompatActivity() {
                     for (sms in Telephony.Sms.Intents.getMessagesFromIntent(p1)) {
                         Toast.makeText(
                             applicationContext,
-                            sms.displayMessageBody,
+                            "hello" + sms.displayMessageBody,
                             Toast.LENGTH_LONG
                         ).show()
+
+
                     }
                 }
             }
@@ -95,5 +94,6 @@ class MainActivity : AppCompatActivity() {
         registerReceiver(br, IntentFilter("android.provider.Telephony.SMS_RECEIVED"))
 
     }
+
 
 }
