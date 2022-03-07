@@ -30,12 +30,14 @@ class CreateWorkout : AppCompatActivity() {
             val sendWT = workoutTitle.text.toString()
             val sendWA = workoutAuthor.text.toString()
 
-            viewModel.addNewWorkout(0, sendWT, sendWA)
+            //viewModel.addNewWorkout(0, sendWT, sendWA)
+            //viewModel.addNewExercise(0,0, "curl", 12,3,15.0)
 
             val intent = Intent(this@CreateWorkout, AddExercises::class.java)
             intent.putExtra("WorkoutTitle", sendWT)
             intent.putExtra("WorkoutAuthor", sendWA)
             this.startActivity(intent)
+
 
 
 

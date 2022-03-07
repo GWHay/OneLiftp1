@@ -10,6 +10,7 @@ class OneLiftViewModel(private val workoutDAO: WorkoutDAO): ViewModel() {
     val allWorkouts: LiveData<List<Workout>> = workoutDAO.getOrderedWorkouts()
     val allExercises: LiveData<List<Exercise>> = workoutDAO.getOrderedExercises()
 
+
     fun insertWorkout(workout: Workout) = viewModelScope.launch {
         workoutDAO.insert(workout)
     }
@@ -35,11 +36,9 @@ class OneLiftViewModel(private val workoutDAO: WorkoutDAO): ViewModel() {
     fun getNewExercise(exerciseID: Int,workoutExerciseID: Int, exerciseTitle: String, repetitions: Int, sets: Int, weight: Double): Exercise {
         return Exercise(exerciseID = exerciseID,workoutExerciseID = workoutExerciseID,exerciseTitle = exerciseTitle, repetitions = repetitions, sets = sets, weight = weight)
     }
-
-
-
-
-
+    fun getWorkoutIdByTitle(workoutTitle: String): LiveData<Int> {
+        return(workoutDAO.getWorkoutIdByTitle(workoutTitle))
+    }
 
 
 }

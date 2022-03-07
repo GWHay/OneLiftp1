@@ -20,7 +20,8 @@ interface WorkoutDAO  {
     @Query("SELECT * FROM exercise_table ORDER BY exerciseID ASC")
     fun getOrderedExercises(): LiveData<List<Exercise>>
 
-   // @Query("SELECT 1 FROM workout_table WHERE workoutID  ")
+    @Query("SELECT workoutID FROM workout_table WHERE workout_title = :workout_title")
+    fun getWorkoutIdByTitle(workout_title: String): LiveData<Int>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(exercise: Exercise)

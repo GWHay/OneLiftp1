@@ -4,11 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.viewModels
-import com.example.oneliftp1.OneLiftApplication
-import com.example.oneliftp1.OneLiftViewModel
-import com.example.oneliftp1.OneLiftViewModelFactory
-import com.example.oneliftp1.R
+import com.example.oneliftp1.*
+import android.util.Log
 
 
 class AddExercises : AppCompatActivity() {
@@ -45,8 +44,11 @@ class AddExercises : AppCompatActivity() {
 
             displayExercises.setText(displayName + " " + displayReps +" " + displaySets +" " + displayWeight)
             //viewModel.addNewWorkout(0, workoutTitle.toString(), workoutAuthor.toString())
+            val exerciseWorkoutId = viewModel.getWorkoutIdByTitle(workoutTitle.toString())
+            //Toast.makeText(this,exerciseWorkoutId,Toast.LENGTH_LONG).show()
+            Log.d("hi", exerciseWorkoutId.toString())
 
-            viewModel.addNewExercise(0,0, "Bicep curl", 12, 3, 20.0)
+            //viewModel.addNewExercise(0, 4, "Bicep curl", 12, 3, 20.0)
         }
 
 
