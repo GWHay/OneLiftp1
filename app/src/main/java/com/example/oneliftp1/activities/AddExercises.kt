@@ -1,5 +1,8 @@
 package com.example.oneliftp1.activities
 
+import android.content.ContentValues.TAG
+import android.content.Intent
+import android.nfc.Tag
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -8,13 +11,20 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.oneliftp1.*
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import kotlinx.coroutines.CoroutineScope
 
 
 class AddExercises : AppCompatActivity() {
 
-    val viewModel: OneLiftViewModel by viewModels{
-        OneLiftViewModelFactory((this?.application as OneLiftApplication).database.WorkoutDAO())
+
+
+    private val viewModel: OneLiftViewModel by viewModels{
+        OneLiftViewModelFactory((application as OneLiftApplication).repository)
     }
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +42,12 @@ class AddExercises : AppCompatActivity() {
         val weight = findViewById<TextView>(R.id.txtWeight)
         val displayExercises = findViewById<TextView>(R.id.displayExercises)
 
+        //val resultObserver = Observer<Int> { realID -> displayExercises.setText(realID)}
+        viewModel.result.observe(this, { result -> displayWorkoutAuthor.setText(result)})
+
+
+
+
 
         displayWorkoutTitle.setText(workoutTitle.toString())
         displayWorkoutAuthor.setText(workoutAuthor.toString())
@@ -42,14 +58,19 @@ class AddExercises : AppCompatActivity() {
             val displaySets = sets.text.toString()
             val displayWeight = weight.text.toString()
 
-            displayExercises.setText(displayName + " " + displayReps +" " + displaySets +" " + displayWeight)
-            //viewModel.addNewWorkout(0, workoutTitle.toString(), workoutAuthor.toString())
-            val exerciseWorkoutId = viewModel.getWorkoutIdByTitle(workoutTitle.toString())
-            //Toast.makeText(this,exerciseWorkoutId,Toast.LENGTH_LONG).show()
-            Log.d("hi", exerciseWorkoutId.toString())
 
-            //viewModel.addNewExercise(0, 4, "Bicep curl", 12, 3, 20.0)
+            displayExercises.setText(displayName + " " + displayReps +" " + displaySets +" " + displayWeight)
+
+            viewModel.addExerciseWithWID(workoutTitle.toString(),displayName.toString(), displayReps.toInt(),displaySets.toInt(),displayWeight.toDouble())
+            Toast.makeText(this,"Exercise Added",Toast.LENGTH_LONG).show()
+
         }
+
+        btnFinish.setOnClickListener{
+            val intent = Intent(this@AddExercises, MainActivity::class.java)
+            this.startActivity(intent)
+        }
+
 
 
 

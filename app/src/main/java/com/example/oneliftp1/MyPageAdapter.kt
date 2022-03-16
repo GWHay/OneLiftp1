@@ -6,7 +6,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.oneliftp1.fragments.BrowseFragment
 import com.example.oneliftp1.fragments.CreateFragment
 import com.example.oneliftp1.fragments.HomeFragment
-import com.example.oneliftp1.fragments.ProgressFragment
+import com.example.oneliftp1.fragments.ShareFragment
 
 class MyPageAdapter(fa: FragmentActivity, private val mNumOfTabs: Int) :
     FragmentStateAdapter(fa) {
@@ -20,7 +20,7 @@ class MyPageAdapter(fa: FragmentActivity, private val mNumOfTabs: Int) :
             0 -> HomeFragment()
             1 -> CreateFragment()
             2 -> BrowseFragment()
-            3 -> ProgressFragment()
+            3 -> ShareFragment()
             else -> HomeFragment()
         }
     }
