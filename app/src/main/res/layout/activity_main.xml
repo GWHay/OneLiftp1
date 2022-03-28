@@ -16,29 +16,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:tabIndicatorColor="#9C27B0"
         app:tabSelectedTextColor="#FFFFFF"
-        app:tabTextColor="#9C27B0">
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Home" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Create" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Browse" />
-
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabItem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Share" />
-    </com.google.android.material.tabs.TabLayout>
+        app:tabTextColor="#9C27B0"/>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/pager"

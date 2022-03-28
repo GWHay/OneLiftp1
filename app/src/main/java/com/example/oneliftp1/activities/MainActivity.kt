@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         tabLayout.addTab(tabLayout.newTab().setText("Home"))
         tabLayout.addTab(tabLayout.newTab().setText("create"))
         tabLayout.addTab(tabLayout.newTab().setText("browse"))
-        tabLayout.addTab(tabLayout.newTab().setText("progress"))
+        tabLayout.addTab(tabLayout.newTab().setText("share"))
         tabLayout.tabGravity = TabLayout.GRAVITY_FILL
 
 
@@ -41,7 +41,17 @@ class MainActivity : AppCompatActivity() {
         viewPager.adapter = adapter
 
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = "Page " + (position + 1)
+            if(position == 0){
+           tab.text = "Home"}
+            else if (position == 1){
+                tab.text = "Create"
+            }
+            else if (position == 2){
+                tab.text = "Browse"
+            }
+            else{
+                tab.text = "Share"
+            }
         }.attach()
 
         if (ActivityCompat.checkSelfPermission(

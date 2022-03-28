@@ -13,7 +13,7 @@ class ShareFragment: Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         //inflate the view
-        val view: View = inflater.inflate(R.layout.progress_fragment, container, false)
+        val view: View = inflater.inflate(R.layout.share_fragment, container, false)
 
 
 

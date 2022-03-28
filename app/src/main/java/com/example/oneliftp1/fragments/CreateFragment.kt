@@ -15,9 +15,9 @@ import com.example.oneliftp1.R
 import com.example.oneliftp1.activities.CreateWorkout
 
 class CreateFragment: Fragment() {
-   // val viewModel: OneLiftViewModel by activityViewModels{
-    //    OneLiftViewModelFactory((application as OneLiftApplication).repository)
-   // }
+//    val viewModel: OneLiftViewModel by activityViewModels{
+//        OneLiftViewModelFactory((application as OneLiftApplication).repository)
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,8 +35,6 @@ class CreateFragment: Fragment() {
                 it.startActivity(intent)}
 
         }
-//
-       //viewModel.addNewWorkout(0,"legs", "Me")
 
 
         return view
